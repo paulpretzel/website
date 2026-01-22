@@ -1,0 +1,83 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* VIBE VARIABLES */
+:root {
+    --bg-color: #0b0c10;
+    --text-color: #c5c6c7;
+    --accent: #66fcf1; /* Cyberpunk Cyan */
+    --secondary: #45a29e;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* CANVAS POSITIONING */
+#webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts 3D background BEHIND text */
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background: rgba(11, 12, 16, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; color: white;}
+.links a { margin-left: 20px; text-decoration: none; color: var(--text-color); font-size: 0.9rem;}
+.links a:hover { color: var(--accent); }
+.btn-contact { border: 1px solid var(--accent); padding: 5px 15px; border-radius: 4px; color: var(--accent) !important;}
+
+/* SECTIONS */
+header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+}
+
+h1 { font-size: 4rem; color: white; margin-bottom: 10px; line-height: 1.1;}
+h2 { font-size: 2.5rem; color: var(--accent); margin-bottom: 30px; border-left: 5px solid var(--secondary); padding-left: 15px;}
+
+section {
+    min-height: 80vh; /* Each section takes up most of the screen */
+    padding: 100px 10%;
+    position: relative;
+    z-index: 10; /* Keeps text above the 3D canvas */
+    background: rgba(11, 12, 16, 0.7); /* Slight fade to make text readable */
+    margin-bottom: 50px;
+}
+
+/* CARDS */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-5px);}
+
+.placeholder-box {
+    border: 2px dashed var(--secondary);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+}
