@@ -8,7 +8,6 @@ canvas.height = window.innerHeight;
 
 // CHARACTERS (Binary 1s and 0s)
 const binary = "10";
-// You can add more characters like "10XY" if you want a messier look
 const characters = binary.split("");
 
 // COLUMN SETUP
@@ -31,11 +30,18 @@ function draw() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // 2. Text Settings
-    ctx.fillStyle = "#00ff41"; // Matrix Neon Green
     ctx.font = fontSize + "px monospace";
 
     // 3. Loop through drops
     for (let i = 0; i < drops.length; i++) {
+        
+        // Randomly pick a color (Green or Cyan)
+        if (Math.random() > 0.90) {
+            ctx.fillStyle = "#00ffff"; // Cyan highlight
+        } else {
+            ctx.fillStyle = "#00ff41"; // Matrix Green
+        }
+
         // Pick a random character
         const text = characters[Math.floor(Math.random() * characters.length)];
         
@@ -53,13 +59,14 @@ function draw() {
     }
 }
 
-// RUN ANIMATION (30 milliseconds = ~30 Frames Per Second)
+// RUN ANIMATION (33ms = ~30fps)
 setInterval(draw, 33);
 
 // HANDLE WINDOW RESIZE
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    
     // Re-calculate columns so the rain covers the new width
     const newColumns = canvas.width / fontSize;
     for (let x = 0; x < newColumns; x++) {
