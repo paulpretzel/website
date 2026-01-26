@@ -25,9 +25,17 @@
         </div>
     </header>
 
+    <div class="controls">
+        <label>RAIN SPEED</label>
+        <input type="range" id="speedRange" min="10" max="100" value="33">
+        
+        <label>DENSITY</label>
+        <input type="range" id="densityRange" min="0.5" max="0.99" step="0.01" value="0.97">
+    </div>
+
     <canvas id="webgl"></canvas>
 
-    <main>
+    <main id="content-flow">
         
         <section id="research">
             <h2>Graduate Research</h2>
