@@ -1,155 +1,83 @@
-/* RESET */
+/* RESET & CORE VARS */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* THE MATRIX PALETTE */
 :root {
-    --bg-color: #000000;          /* Pure Black */
-    --text-color: #a2fca2;        /* Dim Green */
-    --accent: #00ff41;            /* Matrix Neon Green */
-    --secondary: #008f11;         /* Darker Terminal Green */
-    --cyan: #00ffff;              /* Cyberpunk Cyan for contrast */
+    --bg-color: #000000;
+    --text-color: #a2fca2;
+    --accent: #00ff41;
+    --secondary: #008f11;
+    --cyan: #00ffff;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Courier New', Courier, monospace; /* Terminal Font */
+    font-family: 'Courier New', Courier, monospace;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* CRT SCANLINE EFFECT OVERLAY */
-body::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+/* BACKGROUNDS & CANVAS */
+body::after { /* Scanline overlay */
+    content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 999;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none; /* Lets you click through it */
+    z-index: 999; background-size: 100% 2px, 3px 100%; pointer-events: none;
 }
 
-/* CANVAS (The Matrix Rain Background) */
-#webgl {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-}
+#webgl { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-/* NAVIGATION - Glass Terminal Style */
+/* NAVIGATION */
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid var(--secondary);
+    display: flex; justify-content: space-between; padding: 20px 50px; position: fixed; width: 100%; z-index: 100;
+    background: rgba(0, 0, 0, 0.8); border-bottom: 1px solid var(--secondary);
 }
-
-.logo { 
-    font-weight: bold; 
-    font-size: 1.5rem; 
-    color: var(--accent);
-    text-shadow: 0 0 10px var(--secondary); 
-}
-
+.logo { font-weight: bold; font-size: 1.5rem; color: var(--accent); text-shadow: 0 0 10px var(--secondary); }
 .links a { margin-left: 20px; text-decoration: none; color: var(--text-color); font-size: 1rem; text-transform: uppercase;}
 .links a:hover { color: var(--accent); text-shadow: 0 0 5px var(--accent);}
 .btn-contact { border: 1px solid var(--accent); padding: 5px 15px; color: var(--accent) !important; background: rgba(0, 255, 65, 0.1);}
-.btn-contact:hover { background: var(--accent); color: black !important; box-shadow: 0 0 15px var(--accent);}
 
-/* SECTIONS */
-header {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-left: 10%;
-}
-
-h1 { 
-    font-size: 4rem; 
-    color: var(--accent); 
-    margin-bottom: 10px; 
-    text-transform: uppercase;
-    text-shadow: 0 0 10px var(--secondary);
-    line-height: 1.1;
-}
-p { color: var(--text-color); }
-
+/* HEADER */
+header { height: 100vh; display: flex; align-items: center; padding-left: 10%; }
+h1 { font-size: 4rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px var(--secondary); line-height: 1.1; }
 h2 { 
-    font-size: 2.5rem; 
-    color: var(--cyan); 
-    margin-bottom: 30px; 
-    border-left: 5px solid var(--accent); 
-    padding-left: 15px;
-    
-    /* READABILITY FIX: Box around the title */
-    text-shadow: 2px 2px 0px #000;
-    background: rgba(0,0,0,0.6);
-    display: inline-block;
-    padding-right: 15px;
+    font-size: 2.5rem; color: var(--cyan); margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; 
+    text-shadow: 2px 2px 0px #000; background: rgba(0,0,0,0.6); display: inline-block; padding-right: 15px;
 }
 
-section {
-    min-height: 80vh;
-    padding: 100px 10%;
-    
-    /* SMOOTH GRADIENT FIX: Fades from clear (top) to black (bottom) */
-    background: linear-gradient(
-        to bottom, 
-        rgba(0, 0, 0, 0) 0%, 
-        rgba(0, 0, 0, 0.6) 20%, 
-        rgba(0, 0, 0, 0.95) 100%
-    );
-    
+/* THE GRADIENT FIX */
+#content-flow {
+    /* Starts transparent, becomes solid black after 400px of scrolling */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0.95) 400px);
+    padding-top: 100px; /* Space for the fade to happen */
     position: relative;
     z-index: 10;
 }
 
-/* CARDS - HUD Style */
+section {
+    min-height: 80vh;
+    padding: 50px 10%;
+    /* No background here anymore! */
+}
+
+/* CONTROLS (New) */
+.controls {
+    position: fixed; bottom: 20px; right: 20px;
+    background: rgba(0,0,0,0.8); border: 1px solid var(--secondary);
+    padding: 15px; z-index: 1000; width: 200px;
+    color: var(--accent); font-size: 0.8rem;
+}
+.controls label { display: block; margin-bottom: 5px; font-weight: bold; }
+.controls input { width: 100%; margin-bottom: 15px; cursor: pointer; accent-color: var(--accent); }
+
+/* CARDS */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
 .card {
-    background: #050505;
-    padding: 30px;
-    border: 1px solid var(--secondary);
-    transition: 0.3s;
-    position: relative;
+    background: #050505; padding: 30px; border: 1px solid var(--secondary);
+    transition: 0.3s; position: relative;
 }
-/* Corner accent */
-.card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; 
-    border-top: 20px solid var(--accent); border-right: 20px solid transparent;
-}
-
-.card:hover { 
-    border-color: var(--accent); 
-    box-shadow: 0 0 15px var(--secondary); 
-    transform: translateY(-5px);
-}
-
+.card::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-top: 20px solid var(--accent); border-right: 20px solid transparent; }
+.card:hover { border-color: var(--accent); box-shadow: 0 0 15px var(--secondary); transform: translateY(-5px); }
 .card h3 { color: white; margin-bottom: 10px; }
-.interact-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: transparent;
-    border: 1px solid var(--cyan);
-    color: var(--cyan);
-    font-family: inherit;
-    cursor: pointer;
-    text-transform: uppercase;
-}
+.interact-btn { margin-top: 15px; padding: 10px 20px; background: transparent; border: 1px solid var(--cyan); color: var(--cyan); font-family: inherit; cursor: pointer; text-transform: uppercase; }
 .interact-btn:hover { background: var(--cyan); color: black; box-shadow: 0 0 10px var(--cyan);}
-
-.placeholder-box {
-    border: 1px dashed var(--accent);
-    background: rgba(0, 255, 65, 0.05);
-    height: 300px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent);
-}
+.placeholder-box { border: 1px dashed var(--accent); background: rgba(0, 255, 65, 0.05); height: 300px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
