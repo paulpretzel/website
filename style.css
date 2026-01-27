@@ -82,11 +82,11 @@ section { min-height: 80vh; padding: 50px 10%; }
 .interactive-side { flex: 1; }
 .placeholder-box { border: 1px dashed var(--accent); background: rgba(0, 255, 65, 0.05); height: 300px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
 
-/* --- NEW: ACCESS TERMINAL STYLES --- */
+/* --- ACCESS TERMINAL STYLES --- */
 .access-terminal {
     border: 1px solid var(--secondary);
     background: rgba(0, 20, 0, 0.6); 
-    max-width: 700px;
+    width: 100%; /* Changed to 100% to fit grid column */
     margin-top: 20px;
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
     position: relative;
@@ -103,7 +103,6 @@ section { min-height: 80vh; padding: 50px 10%; }
     letter-spacing: 1px;
 }
 
-/* Blinking Red Light */
 .status-light {
     width: 10px; height: 10px;
     background: red;
@@ -119,13 +118,12 @@ section { min-height: 80vh; padding: 50px 10%; }
 
 .terminal-text {
     font-family: 'Courier New', monospace;
-    color: #008f11; /* Darker green for console text */
+    color: #008f11;
     margin: 20px 0;
     font-size: 0.9rem;
     line-height: 1.4;
 }
 
-/* The Big Access Button */
 .access-btn {
     display: inline-block;
     text-decoration: none;
@@ -147,4 +145,26 @@ section { min-height: 80vh; padding: 50px 10%; }
     color: black;
     box-shadow: 0 0 30px var(--accent);
     cursor: pointer;
+}
+
+/* --- NEW DUAL TERMINAL LAYOUT --- */
+.terminal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Split 50% / 50% */
+    gap: 40px;
+    padding: 0 10%;
+    margin-bottom: 100px;
+    align-items: start;
+}
+
+.terminal-col h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Mobile Stack Logic */
+@media (max-width: 900px) {
+    .terminal-grid {
+        grid-template-columns: 1fr; /* Stack vertically on phones */
+    }
 }
