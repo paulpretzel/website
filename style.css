@@ -18,7 +18,7 @@ body {
 }
 
 /* BACKGROUNDS & CANVAS */
-body::after { /* Scanline overlay */
+body::after { 
     content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 999; background-size: 100% 2px, 3px 100%; pointer-events: none;
@@ -46,28 +46,32 @@ h2 {
 
 /* THE GRADIENT FIX */
 #content-flow {
-    /* Starts transparent, becomes solid black after 400px of scrolling */
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0.95) 400px);
-    padding-top: 100px; /* Space for the fade to happen */
-    position: relative;
-    z-index: 10;
+    padding-top: 100px; position: relative; z-index: 10;
 }
+section { min-height: 80vh; padding: 50px 10%; }
 
-section {
-    min-height: 80vh;
-    padding: 50px 10%;
-    /* No background here anymore! */
+/* NEW: FIXED PAUSE BUTTON */
+.matrix-btn {
+    position: fixed; bottom: 30px; right: 30px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 15px 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
 }
-
-/* CONTROLS (New) */
-.controls {
-    position: fixed; bottom: 20px; right: 20px;
-    background: rgba(0,0,0,0.8); border: 1px solid var(--secondary);
-    padding: 15px; z-index: 1000; width: 200px;
-    color: var(--accent); font-size: 0.8rem;
+.matrix-btn:hover {
+    background: var(--accent);
+    color: black;
+    box-shadow: 0 0 20px var(--accent);
 }
-.controls label { display: block; margin-bottom: 5px; font-weight: bold; }
-.controls input { width: 100%; margin-bottom: 15px; cursor: pointer; accent-color: var(--accent); }
 
 /* CARDS */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
