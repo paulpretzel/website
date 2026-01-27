@@ -18,7 +18,7 @@ for (let x = 0; x < columns; x++) { drops[x] = 1; }
 // PAUSE LOGIC
 const pauseBtn = document.getElementById('pauseBtn');
 let isPaused = false;
-let animationId; // Stores the ID so we can cancel it
+let animationId; 
 
 function draw() {
     // 1. Fade old frame
@@ -29,7 +29,7 @@ function draw() {
     ctx.font = fontSize + "px monospace";
 
     for (let i = 0; i < drops.length; i++) {
-        // Color Randomizer
+        // Color Randomizer (Cyan vs Green)
         if (Math.random() > 0.90) {
             ctx.fillStyle = "#00ffff"; 
         } else {
@@ -47,23 +47,22 @@ function draw() {
         drops[i]++;
     }
 
-    // 3. Loop (Fixed speed at 50ms)
-    // We only request the next frame if we are NOT paused
+    // 3. Loop Control
     if (!isPaused) {
-        animationId = setTimeout(draw, 50);
+        // REVERTED SPEED: 33ms (Standard 30fps)
+        animationId = setTimeout(draw, 33);
     }
 }
 
 // TOGGLE FUNCTION
 pauseBtn.addEventListener('click', () => {
-    isPaused = !isPaused; // Flip the switch
+    isPaused = !isPaused; 
 
     if (isPaused) {
         pauseBtn.innerText = "RESUME SYSTEM";
-        // Do nothing else; the loop in draw() won't call itself again
     } else {
         pauseBtn.innerText = "PAUSE SYSTEM";
-        draw(); // Restart the loop manually
+        draw(); // Restart the loop
     }
 });
 
