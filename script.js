@@ -15,13 +15,11 @@ const columns = canvas.width / fontSize;
 const drops = [];
 for (let x = 0; x < columns; x++) { drops[x] = 1; }
 
-// INPUTS
-const speedInput = document.getElementById('speedRange');
-const densityInput = document.getElementById('densityRange');
+// PAUSE LOGIC
+const pauseBtn = document.getElementById('pauseBtn');
+let isPaused = false;
+let animationId; // Stores the ID so we can cancel it
 
-let animationId; // To track the timeout
-
-// DRAWING FUNCTION
 function draw() {
     // 1. Fade old frame
     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -29,13 +27,6 @@ function draw() {
 
     // 2. Text Style
     ctx.font = fontSize + "px monospace";
-
-    // 3. Get Density Value (Inverted: Higher slider = Lower random threshold)
-    // Slider goes 0.5 to 0.99. 
-    // We want "More Density" to mean "Resets LESS often" or "Resets MORE often"?
-    // Actually: "Spawn Rate" usually means how many new drops appear.
-    // In this script, a drop "spawns" when it hits the bottom and resets.
-    const densityThreshold = densityInput.value; 
 
     for (let i = 0; i < drops.length; i++) {
         // Color Randomizer
@@ -48,20 +39,33 @@ function draw() {
         const text = characters[Math.floor(Math.random() * characters.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        // Reset logic (The "Density")
-        if (drops[i] * fontSize > canvas.height && Math.random() > densityThreshold) {
+        // Reset logic
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
 
         drops[i]++;
     }
 
-    // 4. Loop with variable speed
-    // The slider value is the delay in ms. Lower = Faster.
-    // We flip the logic so sliding "Right" makes it FASTER (lower delay)
-    const delay = 110 - speedInput.value; 
-    animationId = setTimeout(draw, delay);
+    // 3. Loop (Fixed speed at 50ms)
+    // We only request the next frame if we are NOT paused
+    if (!isPaused) {
+        animationId = setTimeout(draw, 50);
+    }
 }
+
+// TOGGLE FUNCTION
+pauseBtn.addEventListener('click', () => {
+    isPaused = !isPaused; // Flip the switch
+
+    if (isPaused) {
+        pauseBtn.innerText = "RESUME SYSTEM";
+        // Do nothing else; the loop in draw() won't call itself again
+    } else {
+        pauseBtn.innerText = "PAUSE SYSTEM";
+        draw(); // Restart the loop manually
+    }
+});
 
 // Start Loop
 draw();
