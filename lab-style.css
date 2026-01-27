@@ -1,27 +1,66 @@
+/* "CLEAN LAB" THEME */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    background-color: #f0f0f0; /* Light Grey (Paper) */
-    color: #333;               /* Dark Grey Text (Not black) */
-    font-family: 'Helvetica', 'Arial', sans-serif; /* Clean fonts, not monospace */
-    padding: 40px;
+    background-color: #f9f9f9; /* Paper White */
+    color: #333;               /* Dark Ink */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    border-top: 5px solid #0056b3; /* Academic Blue Accent */
 }
 
-nav a {
-    text-decoration: none;
-    color: #0056b3;
-    font-weight: bold;
-    font-size: 1.2rem;
+/* NAVIGATION */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; background: white; border-bottom: 1px solid #ddd;
 }
+nav a { text-decoration: none; color: #0056b3; font-weight: bold; font-size: 0.9rem; }
+nav a:hover { text-decoration: underline; }
+.nav-title { font-size: 0.8rem; letter-spacing: 1px; color: #888; text-transform: uppercase; }
 
-h1 {
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 10px;
-    color: #004494;
-}
+/* LAYOUT */
+main { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
 
-.blueprint-box {
+header { margin-bottom: 60px; border-bottom: 2px solid #333; padding-bottom: 20px; }
+h1 { font-size: 2.5rem; color: #111; margin-bottom: 5px; }
+.subtitle { color: #666; font-size: 1.1rem; font-weight: 300; }
+
+/* PROJECT SECTIONS */
+.project-block {
     background: white;
-    border: 1px solid #ccc;
+    margin-bottom: 40px;
     padding: 30px;
-    margin-top: 20px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
+.project-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;
+}
+h2 { font-size: 1.4rem; color: #333; }
+.tag { 
+    background: #eef4fa; color: #0056b3; 
+    padding: 5px 12px; border-radius: 20px; 
+    font-size: 0.8rem; font-weight: bold; 
+}
+
+h3 { margin-bottom: 10px; color: #444; }
+
+/* SPLIT CONTENT (Text Left, Image Right) */
+.content-split { display: grid; grid-template-columns: 3fr 2fr; gap: 30px; }
+@media (max-width: 768px) { .content-split { grid-template-columns: 1fr; } }
+
+.specs { margin-top: 15px; padding-left: 20px; color: #555; font-size: 0.95rem; }
+.specs li { margin-bottom: 8px; }
+
+/* VISUAL PLACEHOLDERS */
+.diagram-placeholder {
+    width: 100%; height: 200px;
+    background: #f0f0f0; border: 2px dashed #ccc;
+    display: flex; align-items: center; justify-content: center;
+    color: #999; font-weight: bold; font-size: 0.8rem;
+}
+
+footer { text-align: center; padding: 40px; color: #999; font-size: 0.8rem; }
