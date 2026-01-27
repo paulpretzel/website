@@ -51,9 +51,11 @@ h2 {
 }
 section { min-height: 80vh; padding: 50px 10%; }
 
-/* NEW: FIXED PAUSE BUTTON */
+/* FIXED PAUSE BUTTON */
 .matrix-btn {
-    position: fixed; bottom: 30px; right: 30px;
+    position: fixed; /* Locked to the screen */
+    bottom: 30px; 
+    right: 30px;
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid var(--accent);
     color: var(--accent);
@@ -62,10 +64,11 @@ section { min-height: 80vh; padding: 50px 10%; }
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10000; /* Stays on top of everything */
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.3s;
+    outline: none;
 }
 .matrix-btn:hover {
     background: var(--accent);
