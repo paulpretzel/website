@@ -3,116 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Paul Peretz</title>
+    <title>R&D Log | Paul Peretz</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="research-style.css">
 </head>
 <body>
 
+    <div class="grid-bg"></div>
+
     <nav>
-        <a href="index.html">← Return to Terminal</a>
-        <div class="nav-title">RESEARCH & DEVELOPMENT LOG</div>
+        <a href="index.html" class="back-link">
+            <span class="mono"><</span> TERMINAL_VIEW
+        </a>
+        <div class="nav-id">
+            <span class="label">UNIT:</span> PAUL_PERETZ_MS <span class="status-dot"></span>
+        </div>
     </nav>
 
     <main>
-        <header>
-            <h1>Graduate Research Portfolio</h1>
-            <p class="subtitle">M.S. Mechanical Engineering // University of Illinois Chicago</p>
+        <header class="page-header">
+            <div class="header-decoration"></div>
+            <h1>R&D ARCHIVES</h1>
+            <p class="mono">SYSTEMS // KINEMATICS // PERCEPTION</p>
         </header>
 
-        <section class="project-block">
-            <div class="project-header">
-                <h2>01. Exoskeleton Teleoperation</h2>
-                <span class="tag">Human-Robot Interaction</span>
+        <section class="tech-card">
+            <div class="card-status-bar">
+                <span class="mono-id">ID: EXO-01</span>
+                <span class="status-tag">DEPLOYED</span>
             </div>
-            <div class="content-split">
-                <div class="text">
-                    <h3>Master-Slave Control Architecture</h3>
-                    <p>Designed a teleoperation interface mapping human joint movements to a humanoid robot in real-time. The system utilizes an exoskeleton arm acting as the "master" controller to drive the "slave" humanoid actuators.</p>
-                    <ul class="specs">
-                        <li><strong>Key Tech:</strong> Kinematic mapping, real-time signal processing.</li>
-                        <li><strong>Outcome:</strong> Achieved synchronous motion replication with low latency, enabling precise remote manipulation.</li>
-                    </ul>
+            <div class="card-content">
+                <div class="info-col">
+                    <h2>Exoskeleton Teleoperation</h2>
+                    <p class="subtitle">Human-Robot Interface & Master-Slave Control</p>
+                    <p class="description">
+                        Designed a high-fidelity teleoperation bridge. The system maps human joint space to a humanoid robot in real-time using a custom exoskeleton armature.
+                    </p>
+                    <div class="specs-box">
+                        <div class="spec-row"><span class="spec-label">LATENCY:</span> <span class="spec-val">< 20ms</span></div>
+                        <div class="spec-row"><span class="spec-label">DOF:</span> <span class="spec-val">7-Axis</span></div>
+                        <div class="spec-row"><span class="spec-label">PROTOCOL:</span> <span class="spec-val">UDP/Serial</span></div>
+                    </div>
                 </div>
-                <div class="visual">
-                    <div class="diagram-placeholder">
-                        [DIAGRAM: Exoskeleton Kinematics]
+                <div class="visual-col">
+                    <div class="viewport-frame">
+                        <div class="viewport-overlay">
+                            <span class="mono">[ SIMULATION OFFLINE ]</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="project-block">
-            <div class="project-header">
-                <h2>02. Animatronic Vision System</h2>
-                <span class="tag">Computer Vision</span>
+        <section class="tech-card">
+            <div class="card-status-bar">
+                <span class="mono-id">ID: VIS-02</span>
+                <span class="status-tag">PROTOTYPE</span>
             </div>
-            <div class="content-split">
-                <div class="text">
-                    <h3>Gaze Tracking with OpenCV & Arduino</h3>
-                    <p>Developed an animatronic eye mechanism capable of tracking human faces autonomously. The system integrates computer vision software with hardware actuation.</p>
-                    <ul class="specs">
-                        <li><strong>Software:</strong> Python, OpenCV (Haar Cascades/DNN) for face coordinates.</li>
-                        <li><strong>Hardware:</strong> Arduino microcontroller handling servo kinematics.</li>
-                        <li><strong>Integration:</strong> Serial communication bridge converts pixel coordinates (X,Y) into servo angles (Theta, Phi) in real-time.</li>
-                    </ul>
+            <div class="card-content">
+                <div class="info-col">
+                    <h2>Animatronic Vision System</h2>
+                    <p class="subtitle">OpenCV Gaze Tracking & Servo Actuation</p>
+                    <p class="description">
+                        Biomimetic eye mechanism capable of autonomous face tracking. Python-based computer vision pipeline converts Cartesian coordinates into spherical servo angles.
+                    </p>
+                    <div class="specs-box">
+                        <div class="spec-row"><span class="spec-label">VISION:</span> <span class="spec-val">Haar Cascade</span></div>
+                        <div class="spec-row"><span class="spec-label">HARDWARE:</span> <span class="spec-val">Arduino Uno</span></div>
+                        <div class="spec-row"><span class="spec-label">SPEED:</span> <span class="spec-val">60Hz Loop</span></div>
+                    </div>
                 </div>
-                <div class="visual">
-                    <div class="diagram-placeholder">
-                        [DIAGRAM: Computer Vision Pipeline]
+                <div class="visual-col">
+                    <div class="viewport-frame">
+                        <div class="viewport-overlay">
+                            <span class="mono">[ CAMERA FEED OFFLINE ]</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="project-block">
-            <div class="project-header">
-                <h2>03. Minitaur Leg Mechanism</h2>
-                <span class="tag">Legged Locomotion</span>
+        <section class="tech-card">
+            <div class="card-status-bar">
+                <span class="mono-id">ID: LEG-03</span>
+                <span class="status-tag">ANALYSIS</span>
             </div>
-            <div class="content-split">
-                <div class="text">
-                    <h3>Constrained Kinematics Analysis</h3>
-                    <p>Conducted analysis on a 2-DOF five-bar linkage mechanism (Minitaur leg). Focused on the implementation of constrained hopping behaviors and stability analysis.</p>
-                    <ul class="specs">
-                        <li><strong>Focus:</strong> Raibert hopping controllers and stance phase dynamics.</li>
-                        <li><strong>Analysis:</strong> Mapped motor torques to toe forces using Jacobian transformations to optimize jump height and landing stability.</li>
-                    </ul>
+            <div class="card-content">
+                <div class="info-col">
+                    <h2>Minitaur Leg Mechanism</h2>
+                    <p class="subtitle">Constrained Kinematics & Raibert Hopping</p>
+                    <p class="description">
+                        Kinematic analysis of a 2-DOF five-bar linkage. Implemented Jacobian transformations to map brushless motor torques to vertical toe forces for stable hopping.
+                    </p>
+                    <div class="specs-box">
+                        <div class="spec-row"><span class="spec-label">LINKAGE:</span> <span class="spec-val">5-Bar Parallel</span></div>
+                        <div class="spec-row"><span class="spec-label">CONTROL:</span> <span class="spec-val">Impedance</span></div>
+                    </div>
                 </div>
-                <div class="visual">
-                    <div class="diagram-placeholder">
-                        [DIAGRAM: 5-Bar Linkage]
+                <div class="visual-col">
+                    <div class="viewport-frame">
+                        <div class="viewport-overlay">
+                            <span class="mono">[ KINEMATICS VIEW OFFLINE ]</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="project-block">
-            <div class="project-header">
-                <h2>04. Zumobot Autonomous Navigation</h2>
-                <span class="tag">Control Systems</span>
+        <section class="tech-card">
+            <div class="card-status-bar">
+                <span class="mono-id">ID: NAV-04</span>
+                <span class="status-tag">AUTONOMOUS</span>
             </div>
-            <div class="content-split">
-                <div class="text">
-                    <h3>PID Velocity Control & Perception</h3>
-                    <p>Engineered a closed-loop control system for a differential drive robot. Integrated a RealSense depth camera to detect drivable ground planes and avoid obstacles.</p>
-                    <ul class="specs">
-                        <li><strong>Control Loop:</strong> Implemented a PID controller using built-in encoders to ensure PWM input linearly correlates to actual wheel velocity, compensating for battery voltage drop and friction.</li>
-                        <li><strong>Perception:</strong> RealSense depth cloud processing for floor segmentation.</li>
-                    </ul>
+            <div class="card-content">
+                <div class="info-col">
+                    <h2>Zumobot Navigation</h2>
+                    <p class="subtitle">PID Control & Depth Perception</p>
+                    <p class="description">
+                        Closed-loop velocity control system using encoder feedback. Integrated RealSense depth clouds for ground plane segmentation and obstacle avoidance.
+                    </p>
+                    <div class="specs-box">
+                        <div class="spec-row"><span class="spec-label">SENSOR:</span> <span class="spec-val">RealSense D435</span></div>
+                        <div class="spec-row"><span class="spec-label">ALGO:</span> <span class="spec-val">PID Velocity</span></div>
+                    </div>
                 </div>
-                <div class="visual">
-                    <div class="diagram-placeholder">
-                        [DIAGRAM: PID Block Diagram]
+                <div class="visual-col">
+                    <div class="viewport-frame">
+                        <div class="viewport-overlay">
+                            <span class="mono">[ SENSOR DATA OFFLINE ]</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
-
-    <footer>
-        <p>&copy; 2026 Paul Peretz. Generated from Research Log.</p>
-    </footer>
 
 </body>
 </html>
