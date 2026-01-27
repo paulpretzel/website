@@ -2,29 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research | Paul Peretz</title>
-    <link rel="stylesheet" href="lab-style.css">
+    <link rel="stylesheet" href="research-style.css">
 </head>
 <body>
 
     <nav>
-        <a href="index.html">← Back to Terminal</a>
+        <a href="index.html">← Return to Terminal</a>
+        <div class="nav-title">RESEARCH & DEVELOPMENT LOG</div>
     </nav>
 
     <main>
-        <h1>Minitaur Leg Kinematics</h1>
-        <p class="subtitle">Graduate Thesis // 2026</p>
-        
-        <div class="blueprint-box">
-            <h2>Abstract</h2>
-            <p>Here you can paste your actual abstract text. It will look like a technical document.</p>
-        </div>
+        <header>
+            <h1>Graduate Research Portfolio</h1>
+            <p class="subtitle">M.S. Mechanical Engineering // University of Illinois Chicago</p>
+        </header>
 
-        <div class="blueprint-box">
-            <h2>Control Laws</h2>
-            <p>Details about the Raibert hopping controllers...</p>
-        </div>
+        <section class="project-block">
+            <div class="project-header">
+                <h2>01. Exoskeleton Teleoperation</h2>
+                <span class="tag">Human-Robot Interaction</span>
+            </div>
+            <div class="content-split">
+                <div class="text">
+                    <h3>Master-Slave Control Architecture</h3>
+                    <p>Designed a teleoperation interface mapping human joint movements to a humanoid robot in real-time. The system utilizes an exoskeleton arm acting as the "master" controller to drive the "slave" humanoid actuators.</p>
+                    <ul class="specs">
+                        <li><strong>Key Tech:</strong> Kinematic mapping, real-time signal processing.</li>
+                        <li><strong>Outcome:</strong> Achieved synchronous motion replication with low latency, enabling precise remote manipulation.</li>
+                    </ul>
+                </div>
+                <div class="visual">
+                    <div class="diagram-placeholder">
+                        [DIAGRAM: Exoskeleton Kinematics]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-block">
+            <div class="project-header">
+                <h2>02. Animatronic Vision System</h2>
+                <span class="tag">Computer Vision</span>
+            </div>
+            <div class="content-split">
+                <div class="text">
+                    <h3>Gaze Tracking with OpenCV & Arduino</h3>
+                    <p>Developed an animatronic eye mechanism capable of tracking human faces autonomously. The system integrates computer vision software with hardware actuation.</p>
+                    <ul class="specs">
+                        <li><strong>Software:</strong> Python, OpenCV (Haar Cascades/DNN) for face coordinates.</li>
+                        <li><strong>Hardware:</strong> Arduino microcontroller handling servo kinematics.</li>
+                        <li><strong>Integration:</strong> Serial communication bridge converts pixel coordinates (X,Y) into servo angles (Theta, Phi) in real-time.</li>
+                    </ul>
+                </div>
+                <div class="visual">
+                    <div class="diagram-placeholder">
+                        [DIAGRAM: Computer Vision Pipeline]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-block">
+            <div class="project-header">
+                <h2>03. Minitaur Leg Mechanism</h2>
+                <span class="tag">Legged Locomotion</span>
+            </div>
+            <div class="content-split">
+                <div class="text">
+                    <h3>Constrained Kinematics Analysis</h3>
+                    <p>Conducted analysis on a 2-DOF five-bar linkage mechanism (Minitaur leg). Focused on the implementation of constrained hopping behaviors and stability analysis.</p>
+                    <ul class="specs">
+                        <li><strong>Focus:</strong> Raibert hopping controllers and stance phase dynamics.</li>
+                        <li><strong>Analysis:</strong> Mapped motor torques to toe forces using Jacobian transformations to optimize jump height and landing stability.</li>
+                    </ul>
+                </div>
+                <div class="visual">
+                    <div class="diagram-placeholder">
+                        [DIAGRAM: 5-Bar Linkage]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-block">
+            <div class="project-header">
+                <h2>04. Zumobot Autonomous Navigation</h2>
+                <span class="tag">Control Systems</span>
+            </div>
+            <div class="content-split">
+                <div class="text">
+                    <h3>PID Velocity Control & Perception</h3>
+                    <p>Engineered a closed-loop control system for a differential drive robot. Integrated a RealSense depth camera to detect drivable ground planes and avoid obstacles.</p>
+                    <ul class="specs">
+                        <li><strong>Control Loop:</strong> Implemented a PID controller using built-in encoders to ensure PWM input linearly correlates to actual wheel velocity, compensating for battery voltage drop and friction.</li>
+                        <li><strong>Perception:</strong> RealSense depth cloud processing for floor segmentation.</li>
+                    </ul>
+                </div>
+                <div class="visual">
+                    <div class="diagram-placeholder">
+                        [DIAGRAM: PID Block Diagram]
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer>
+        <p>&copy; 2026 Paul Peretz. Generated from Research Log.</p>
+    </footer>
 
 </body>
 </html>
