@@ -36,7 +36,7 @@ nav {
 .links a:hover { color: var(--accent); text-shadow: 0 0 5px var(--accent);}
 .btn-contact { border: 1px solid var(--accent); padding: 5px 15px; color: var(--accent) !important; background: rgba(0, 255, 65, 0.1);}
 
-/* HEADER & TYPEWRITER STYLES */
+/* HEADER STYLES */
 header { height: 100vh; display: flex; align-items: center; padding-left: 10%; }
 
 /* The Opacity Box / Blur Effect */
@@ -44,24 +44,12 @@ header { height: 100vh; display: flex; align-items: center; padding-left: 10%; }
     background: rgba(0, 0, 0, 0.75); /* Dark semi-transparent box */
     padding: 40px;
     border-left: 5px solid var(--accent);
-    backdrop-filter: blur(5px); /* Blurs the rain behind the text */
+    backdrop-filter: blur(5px);
     max-width: 900px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
-h1 { font-size: 4rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px var(--secondary); line-height: 1.1; min-height: 4.4rem; /* Keeps height stable while typing */ }
-
-/* The Blinking Cursor */
-.cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1em;
-    background-color: var(--accent);
-    margin-left: 5px;
-    animation: blink 1s infinite;
-    vertical-align: bottom;
-}
-@keyframes blink { 0% {opacity: 1;} 50% {opacity: 0;} 100% {opacity: 1;} }
+h1 { font-size: 4rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px var(--secondary); line-height: 1.1; }
 
 h2 { 
     font-size: 2.5rem; color: var(--cyan); margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; 
