@@ -1,12 +1,15 @@
-// --- PART 1: MATRIX RAIN CANVAS ---
+// SETUP THE CANVAS
 const canvas = document.getElementById('webgl');
 const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// CHARACTERS
 const binary = "10";
 const characters = binary.split("");
+
+// COLUMNS
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = [];
@@ -18,64 +21,59 @@ let isPaused = false;
 let animationId; 
 
 function draw() {
+    // 1. Fade old frame
     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 2. Text Style
     ctx.font = fontSize + "px monospace";
 
     for (let i = 0; i < drops.length; i++) {
-        if (Math.random() > 0.90) { ctx.fillStyle = "#00ffff"; } 
-        else { ctx.fillStyle = "#00ff41"; }
+        // Color Randomizer (Cyan vs Green)
+        if (Math.random() > 0.90) {
+            ctx.fillStyle = "#00ffff"; 
+        } else {
+            ctx.fillStyle = "#00ff41"; 
+        }
 
         const text = characters[Math.floor(Math.random() * characters.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
+        // Reset logic
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
+
         drops[i]++;
     }
 
+    // 3. Loop Control
     if (!isPaused) {
         animationId = setTimeout(draw, 33);
     }
 }
 
+// TOGGLE FUNCTION
 pauseBtn.addEventListener('click', () => {
     isPaused = !isPaused; 
-    if (isPaused) { pauseBtn.innerText = "RESUME SYSTEM"; } 
-    else { pauseBtn.innerText = "PAUSE SYSTEM"; draw(); }
+
+    if (isPaused) {
+        pauseBtn.innerText = "RESUME SYSTEM";
+    } else {
+        pauseBtn.innerText = "PAUSE SYSTEM";
+        draw(); 
+    }
 });
 
+// Start Loop
 draw();
 
+// RESIZE HANDLER
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const newColumns = canvas.width / fontSize;
-    for (let x = 0; x < newColumns; x++) { if (!drops[x]) drops[x] = 1; }
-});
-
-
-// --- PART 2: TYPEWRITER EFFECT ---
-const textToType = "ENGINEER. MAKER. MENTOR.";
-const typeTarget = document.getElementById('typewriter');
-let charIndex = 0;
-
-function typeWriter() {
-    if (charIndex < textToType.length) {
-        // Add one character
-        const char = textToType.charAt(charIndex);
-        
-        // We set the innerHTML to the current text + the blinking cursor span
-        typeTarget.innerHTML = textToType.substring(0, charIndex + 1) + '<span class="cursor"></span>';
-        
-        charIndex++;
-        setTimeout(typeWriter, 100); // Speed: 100ms per character
-    } else {
-        // Finished typing: keep the cursor blinking
-        typeTarget.innerHTML = textToType + '<span class="cursor"></span>';
+    for (let x = 0; x < newColumns; x++) {
+        if (!drops[x]) drops[x] = 1;
     }
-}
-
-// Start typing when page loads
-window.onload = typeWriter;
+});
