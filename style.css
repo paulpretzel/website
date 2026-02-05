@@ -39,9 +39,8 @@ nav {
 /* HEADER STYLES */
 header { height: 100vh; display: flex; align-items: center; padding-left: 10%; }
 
-/* The Opacity Box / Blur Effect */
 .hero-content {
-    background: rgba(0, 0, 0, 0.75); /* Dark semi-transparent box */
+    background: rgba(0, 0, 0, 0.75);
     padding: 40px;
     border-left: 5px solid var(--accent);
     backdrop-filter: blur(5px);
@@ -72,12 +71,6 @@ section { min-height: 80vh; padding: 50px 10%; }
     cursor: pointer; z-index: 10000; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; outline: none;
 }
 .matrix-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 20px var(--accent); }
-
-/* VENTURES */
-.split-layout { display: flex; gap: 40px; }
-.text-side { flex: 1; }
-.interactive-side { flex: 1; }
-.placeholder-box { border: 1px dashed var(--accent); background: rgba(0, 255, 65, 0.05); height: 300px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
 
 /* TERMINAL STYLES */
 .access-terminal {
