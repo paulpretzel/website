@@ -36,15 +36,39 @@ nav {
 .links a:hover { color: var(--accent); text-shadow: 0 0 5px var(--accent);}
 .btn-contact { border: 1px solid var(--accent); padding: 5px 15px; color: var(--accent) !important; background: rgba(0, 255, 65, 0.1);}
 
-/* HEADER */
+/* HEADER & TYPEWRITER STYLES */
 header { height: 100vh; display: flex; align-items: center; padding-left: 10%; }
-h1 { font-size: 4rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px var(--secondary); line-height: 1.1; }
+
+/* The Opacity Box / Blur Effect */
+.hero-content {
+    background: rgba(0, 0, 0, 0.75); /* Dark semi-transparent box */
+    padding: 40px;
+    border-left: 5px solid var(--accent);
+    backdrop-filter: blur(5px); /* Blurs the rain behind the text */
+    max-width: 900px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+h1 { font-size: 4rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px var(--secondary); line-height: 1.1; min-height: 4.4rem; /* Keeps height stable while typing */ }
+
+/* The Blinking Cursor */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1em;
+    background-color: var(--accent);
+    margin-left: 5px;
+    animation: blink 1s infinite;
+    vertical-align: bottom;
+}
+@keyframes blink { 0% {opacity: 1;} 50% {opacity: 0;} 100% {opacity: 1;} }
+
 h2 { 
     font-size: 2.5rem; color: var(--cyan); margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; 
     text-shadow: 2px 2px 0px #000; background: rgba(0,0,0,0.6); display: inline-block; padding-right: 15px;
 }
 
-/* THE GRADIENT FIX */
+/* LAYOUT & SECTIONS */
 #content-flow {
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0.95) 400px);
     padding-top: 100px; position: relative; z-index: 10;
@@ -53,118 +77,40 @@ section { min-height: 80vh; padding: 50px 10%; }
 
 /* FIXED PAUSE BUTTON */
 .matrix-btn {
-    position: fixed; 
-    bottom: 30px; 
-    right: 30px;
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 15px 25px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    z-index: 10000; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
-    outline: none;
+    position: fixed; bottom: 30px; right: 30px;
+    background: rgba(0, 0, 0, 0.9); border: 1px solid var(--accent);
+    color: var(--accent); padding: 15px 25px;
+    font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1rem;
+    cursor: pointer; z-index: 10000; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; outline: none;
 }
-.matrix-btn:hover {
-    background: var(--accent);
-    color: black;
-    box-shadow: 0 0 20px var(--accent);
-}
+.matrix-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 20px var(--accent); }
 
-/* VENTURES & GENERAL STYLES */
+/* VENTURES */
 .split-layout { display: flex; gap: 40px; }
 .text-side { flex: 1; }
 .interactive-side { flex: 1; }
 .placeholder-box { border: 1px dashed var(--accent); background: rgba(0, 255, 65, 0.05); height: 300px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
 
-/* --- ACCESS TERMINAL STYLES --- */
+/* TERMINAL STYLES */
 .access-terminal {
-    border: 1px solid var(--secondary);
-    background: rgba(0, 20, 0, 0.6); 
-    width: 100%; /* Changed to 100% to fit grid column */
-    margin-top: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-    position: relative;
+    border: 1px solid var(--secondary); background: rgba(0, 20, 0, 0.6); width: 100%;
+    margin-top: 20px; box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); position: relative;
 }
-
 .terminal-header {
-    background: rgba(0, 255, 65, 0.1);
-    padding: 10px 20px;
-    border-bottom: 1px solid var(--secondary);
-    font-size: 0.8rem;
-    color: var(--secondary);
-    display: flex; align-items: center;
-    font-weight: bold;
-    letter-spacing: 1px;
+    background: rgba(0, 255, 65, 0.1); padding: 10px 20px; border-bottom: 1px solid var(--secondary);
+    font-size: 0.8rem; color: var(--secondary); display: flex; align-items: center; font-weight: bold; letter-spacing: 1px;
 }
-
-.status-light {
-    width: 10px; height: 10px;
-    background: red;
-    border-radius: 50%;
-    margin-right: 15px;
-    box-shadow: 0 0 5px red;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
-
+.status-light { width: 10px; height: 10px; background: red; border-radius: 50%; margin-right: 15px; box-shadow: 0 0 5px red; animation: blink 1s infinite; }
 .terminal-body { padding: 30px; }
-
-.terminal-text {
-    font-family: 'Courier New', monospace;
-    color: #008f11;
-    margin: 20px 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
+.terminal-text { font-family: 'Courier New', monospace; color: #008f11; margin: 20px 0; font-size: 0.9rem; line-height: 1.4; }
 .access-btn {
-    display: inline-block;
-    text-decoration: none;
-    background: transparent;
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: 0.3s;
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
+    display: inline-block; text-decoration: none; background: transparent; border: 2px solid var(--accent);
+    color: var(--accent); padding: 15px 30px; font-size: 1.2rem; font-weight: bold; letter-spacing: 2px;
+    transition: 0.3s; width: 100%; text-align: center; margin-top: 10px;
 }
+.access-btn:hover { background: var(--accent); color: black; box-shadow: 0 0 30px var(--accent); cursor: pointer; }
 
-.access-btn:hover {
-    background: var(--accent);
-    color: black;
-    box-shadow: 0 0 30px var(--accent);
-    cursor: pointer;
-}
-
-/* --- NEW DUAL TERMINAL LAYOUT --- */
-.terminal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Split 50% / 50% */
-    gap: 40px;
-    padding: 0 10%;
-    margin-bottom: 100px;
-    align-items: start;
-}
-
-.terminal-col h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-/* Mobile Stack Logic */
-@media (max-width: 900px) {
-    .terminal-grid {
-        grid-template-columns: 1fr; /* Stack vertically on phones */
-    }
-}
+/* TERMINAL GRID */
+.terminal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 0 10%; margin-bottom: 100px; align-items: start; }
+.terminal-col h2 { font-size: 2rem; margin-bottom: 20px; }
+@media (max-width: 900px) { .terminal-grid { grid-template-columns: 1fr; } }
