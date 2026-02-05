@@ -1,0 +1,32 @@
+/* SYSTEM TRANSITION OVERLAY */
+#loader-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Always fades through black */
+    z-index: 99999; /* On top of EVERYTHING */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade */
+    pointer-events: none; /* Allows clicking after it fades out */
+}
+
+/* The Loading Text */
+.loader-text {
+    font-family: 'Courier New', monospace;
+    color: #00ff41; /* Matrix Green (The "Core" System Color) */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: blink 0.5s infinite alternate;
+}
+
+@keyframes blink { from { opacity: 1; } to { opacity: 0.5; } }
+
+/* Utility class to hide the curtain */
+.curtain-hidden {
+    opacity: 0;
+}
